@@ -54,16 +54,16 @@ async function main() {//главная функция
 
         
         postsData.forEach(el => {
-            var placemark = new ymaps.Placemark(el.Cells.geoData.coordinates);
+            let coord = el.Cells.geoData.coordinates;
+            let correctedCoord = [coord[1], coord[0]];
 
+            var placemark = new ymaps.Placemark(correctedCoord, {
+                hintContent: el.NameWinter,
+                balloonContent: el.Address
+            });
+                
             myMap.geoObjects.add(placemark);
         });
-
-        var placemark2 = new ymaps.Placemark([55.757029, 37.582424], {
-            hintContent: 'Метка 2',
-            balloonContent: 'Это метка номер 2'
-        });
-        myMap.geoObjects.add(placemark2);
     }
 
     function displayList(arrData, rowPerPage, page) {//отображение таблицы и ее содержимого
