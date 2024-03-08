@@ -67,3 +67,12 @@ footer a{
 p{
   font-family: 'Playfair Display', serif;
 }
+
+.photo{
+  width: 70%;
+}
+
+.filterplace{
+  min-height: 70px;
+  text-align: bottom;
+}

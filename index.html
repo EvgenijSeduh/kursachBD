@@ -23,7 +23,9 @@
     <header>
         <div class="container">
             <div class="row">
-                <div class="col-1"></div>
+                <div class="col-1">
+                    <img src="img/iconCompany.png" alt="*" class="logo computer">
+                </div>
                 <div class="col-10">
                     <p class="text-center fs-1 title">Самосовершенствуйся с нами</p>
                 </div>
@@ -36,10 +38,10 @@
     <main>
         <div class="container about-site">
             <div class="row">
-                <div class="col-4">
-                    <i class="bi bi-window-sidebar"></i>
+                <div class="col-md-4">
+                    <img src="img/photoAbout.png" alt="Не удалось загрузить логотип" class="photo computer">
                 </div>
-                <div class="col-8">
+                <div class="col-md-8">
                     <p class="text-center fs-4">Описание</p>
                     <p>"Welcome to Playground Finder Moscow - ваш путеводитель по спортивным площадкам в Москве! Наш
                         сайт предлагает широкий выбор спортивных площадок для всех возрастов и интересов. От парков и
@@ -80,38 +82,36 @@
             </div>
         </div>
 
-        <div class="container filter">
+        <div class="container overflow-hidden filter">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 filterplace">
                     <label for="inputField">Прокат оборудования</label>
-                    <select class="form-select filterArea" id="equipmentFilter">
+                    <select class="form-select filterArea align-bottom" id="equipmentFilter">
                         <option value="да">Есть</option>
                         <option value="нет">Нет</option>
                         <option value="not chanche" selected>Не выбранно</option>
                     </select>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-3 filterplace">
                     <label for="inputField">Раздевалка</label>
-                    <select class="form-select filterArea" id="lockerRoomFilter">
+                    <select class="form-select filterArea align-bottom" id="lockerRoomFilter">
                         <option value="да">Есть</option>
                         <option value="нет">Нет</option>
                         <option value="not chanche" selected>Не выбранно</option>
                     </select>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-3 filterplace">
                     <label for="foodFilter">Точка питания</label>
-                    <select class="form-select filterArea" id="foodFilter">
+                    <select class="form-select filterArea align-bottom" id="foodFilter">
                         <option value="да">Есть</option>
                         <option value="нет">Нет</option>
                         <option value="not chanche" selected>Не выбранно</option>
                     </select>
                 </div>
 
-
-
-                <div class="col-md-3">
+                <div class="col-md-3 filterplace align-bottom">
                     <label for="toiletFilter">Туалет</label>
                     <select class="form-select filterArea" id="toiletFilter">
                         <option value="да">Есть</option>
@@ -121,7 +121,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 filterplace align-bottom">
                     <label for="wifiFilter">Wi-Fi</label>
                     <select class="form-select filterArea" id="wifiFilter">
                         <option value="да">Есть</option>
@@ -130,7 +130,7 @@
                     </select>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-3 filterplace align-bottom">
                     <label for="lightFilter">Дополнительное освещение</label>
                     <select class="form-select filterArea" id="lightFilter">
                         <option value="да">Есть</option>
@@ -139,9 +139,7 @@
                     </select>
                 </div>
 
-
-
-                <div class="col-md-3">
+                <div class="col-md-3 filterplace align-bottom">
                     <label for="priceFilter">Цена</label>
                     <select class="form-select filterArea" id="priceFilter">
                         <option value="бесплатно">Бесплатно</option>
@@ -150,7 +148,7 @@
                     </select>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-3 filterplace align-bottom">
                     <label for="disabledFilter">Для инвалидов</label>
                     <select class="form-select filterArea" id="disabledFilter">
                         <option value="да">Оборудовано</option>
