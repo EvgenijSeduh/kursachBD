@@ -1,0 +1,23 @@
+:root {
+    --color-1: rgb(66, 145, 209);
+    --color-2:rgb(142, 188, 226);
+  }
+  *{
+    margin:0;
+    padding: 0;
+  }
+  html{
+    background-color: var(--color-2);
+  }
+
+header, footer{
+    background-color: var(--color-1);
+}
+main{
+    min-height: 100vh;
+    background-color: var(--color-2);
+}
+footer{
+    margin-bottom: 0;
+    padding-bottom: 5vh;
+}
