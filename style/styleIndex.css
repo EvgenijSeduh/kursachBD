@@ -58,10 +58,6 @@ footer a{
   height: 50vw;
 }
 
-.form-control{
-  width: 100%;
-}
-
 @media (max-width: 767px) {
   .computer { 
     display: none;

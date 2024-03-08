@@ -27,6 +27,7 @@ async function main() {//главная функция
     const searchInput = document.querySelector('.form-control');
 
     // Для поиска
+
     form.addEventListener('input', (e) => {
         e.preventDefault();
 
@@ -44,24 +45,70 @@ async function main() {//главная функция
         displayPagination(searchedData, rows);
     });
 
+    const filterArea = document.querySelectorAll('.filterArea');
+    const fieldsInObjectAndFilterArea = {//соотношениеполя и название в json
+        equipmentFilter: 'HasEquipmentRental',
+        lockerRoomFilter: 'HasDressingRoom',
+        foodFilter: 'HasEatery',
+        toiletFilter: 'HasToilet',
+        wifiFilter: 'HasWifi',
+        lightFilter: 'Lighting',
+        priceFilter: 'Paid',
+        disabledFilter: 'DisabilityFriendly'
+    };
+
+
+    const filter = {};//список фильтров
+
+    filterArea.forEach(area => {//фильтрация
+        area.addEventListener('change', function () {
+            if (this.value == "not chanche") {
+                delete filter[fieldsInObjectAndFilterArea[this.id]];
+            } else {
+                filter[fieldsInObjectAndFilterArea[this.id]] = this.value;
+            }
+            if (Object.keys(filter).length > 0) {
+                const result = [];
+                postsData.forEach(el => {
+                    let flag = true;
+                    for (const filterPoin in filter) {
+                        if (el.Cells[filterPoin] != filter[filterPoin]) {
+                            console.log(el.Cells[filterPoin], filter[filterPoin]);
+                            flag = false;
+                        }
+                    }
+                    if (flag) {
+                        result.push(el);
+                    }
+                })
+                console.log(result)
+                displayList(result, rows, currentPage);
+                displayPagination(result, rows);
+            }else{
+                displayList(postsData, rows, currentPage);
+                displayPagination(postsData, rows);
+            }
+
+        });
+    });
+
+
     async function init() {//для карты
         let myMap = new ymaps.Map("map", {
             center: [55.751574, 37.573856],
-            zoom: 13
+            zoom: 14
         });
 
-        
 
-        
         postsData.forEach(el => {
             let coord = el.Cells.geoData.coordinates;
             let correctedCoord = [coord[1], coord[0]];
 
             var placemark = new ymaps.Placemark(correctedCoord, {
-                hintContent: el.NameWinter,
-                balloonContent: el.Address
+                hintContent: el.Cells.NameWinter,
+                balloonContent: el.Cells.Address
             });
-                
+
             myMap.geoObjects.add(placemark);
         });
     }
@@ -85,7 +132,7 @@ async function main() {//главная функция
         for (const headerName of tableHeaderName) {
             const postsHeaderCell = document.createElement('th');
             postsHeaderCell.textContent = headerName;
-            if(headerName =='Адрес'){
+            if (headerName == 'Адрес') {
                 postsHeaderCell.classList.add('computer');
             }
             postsTableHeaderRow.appendChild(postsHeaderCell);
@@ -112,12 +159,12 @@ async function main() {//главная функция
             buttonMore.textContent = 'Подробнее';
             buttonMore.classList.add('btn', 'btn-primary');
 
-            buttonMore.addEventListener('click', function() {//слушатель кнопки
+            buttonMore.addEventListener('click', function () {//слушатель кнопки
                 const playgroundId = el.global_id;
-            
+
                 // Формируем URL строку с передачей значения в параметр
                 const url = '../php/card.html?id=' + playgroundId;
-            
+
                 window.open(url);
             });
 

@@ -39,6 +39,28 @@ const playgroundId = searchParams.get('id');
 async function main() {
     const tableHeaderName = await getDataForColumsName();
     const tableCellsInfo = await getDataForId(playgroundId);
+    console.log(tableCellsInfo, tableCellsInfo.geoData.coordinates)
+
+    async function init() {//для карты
+        
+        let coord = tableCellsInfo.geoData.coordinates;
+        
+        let correctedCoord = [coord[1], coord[0]];
+        let myMap = new ymaps.Map("map", {
+            center: correctedCoord,
+            zoom: 14
+        });
+
+            var placemark = new ymaps.Placemark(correctedCoord, {
+                hintContent: tableCellsInfo.NameWinter,
+                balloonContent: tableCellsInfo.Address
+            });
+
+            myMap.geoObjects.add(placemark);
+    }
+
+
+    
 
     const mainInfo = document.querySelector(".mainInfo");
 
@@ -81,6 +103,7 @@ async function main() {
 
     infoTable.appendChild(infoTableBody);
     mainInfo.appendChild(infoTable);
+    ymaps.ready(init);
 
 }
 main();

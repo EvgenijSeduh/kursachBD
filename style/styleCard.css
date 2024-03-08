@@ -30,3 +30,8 @@ footer a{
     color:white;
   }
 
+  #map {
+    width: 50vw;
+    height: 30vw;
+    margin: 15px;
+  }
