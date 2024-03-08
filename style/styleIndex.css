@@ -59,6 +59,15 @@ footer a{
 }
 
 .filter input{
-  margin-top: 30px;
-  width: 87vw;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .computer { 
+    display: none;
+  }
+}
+/* ------------------------------------ */
+p{
+  font-family: 'Playfair Display', serif;
 }

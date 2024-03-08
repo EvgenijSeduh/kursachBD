@@ -8,16 +8,25 @@
   }
   html{
     background-color: var(--color-2);
+    height: auto;
   }
 
 header, footer{
     background-color: var(--color-1);
+    min-height: 50px;
 }
 main{
     min-height: 100vh;
+    height: auto;
     background-color: var(--color-2);
+    margin-bottom:-17px ;
 }
 footer{
     margin-bottom: 0;
     padding-bottom: 5vh;
 }
+footer a{
+    text-decoration: none;
+    color:white;
+  }
+

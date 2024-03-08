@@ -54,11 +54,7 @@ async function main() {//главная функция
 
         
         postsData.forEach(el => {
-            console.log(el.Cells.geoData.coordinates);
-            let placemark = new ymaps.Placemark(el.Cells.geoData.coordinates, {
-                hintContent: el.global_id,
-                balloonContent: el.global_id
-            });
+            var placemark = new ymaps.Placemark(el.Cells.geoData.coordinates);
 
             myMap.geoObjects.add(placemark);
         });
@@ -89,6 +85,9 @@ async function main() {//главная функция
         for (const headerName of tableHeaderName) {
             const postsHeaderCell = document.createElement('th');
             postsHeaderCell.textContent = headerName;
+            if(headerName =='Адрес'){
+                postsHeaderCell.classList.add('computer');
+            }
             postsTableHeaderRow.appendChild(postsHeaderCell);
         }
 
@@ -106,6 +105,7 @@ async function main() {//главная функция
 
             const addressPlayground = document.createElement('td');
             addressPlayground.textContent = el.Cells.AdmArea + ' ' + el.Cells.District + ' ' + el.Cells.Address;
+            addressPlayground.classList.add('computer')
 
 
             const buttonMore = document.createElement('button');
